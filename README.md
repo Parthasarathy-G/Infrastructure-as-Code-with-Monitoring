@@ -1,103 +1,123 @@
-# 🚀 Infrastructure as Code on AWS using Terraform
+<img width="100%" alt="Infrastructure Banner" src="assets/banner.png" />
 
-## 📌 Overview
+# Infrastructure as Code with Monitoring
 
-This project demonstrates how to provision and manage AWS infrastructure using **Terraform** with integrated **monitoring and alerting**.
+This project demonstrates how to provision and manage AWS infrastructure using **Terraform**, while improving visibility through **monitoring dashboards and alerting**.
 
-The goal is to create a **scalable, repeatable, and production-like cloud environment** using Infrastructure as Code (IaC) principles.
-
----
-
-## 🏗️ Architecture
-
-![Architecture Diagram](./assets/architecture.png)
-
-**Key Components:**
-
-* VPC with public/private subnets
-* EC2 instances for application hosting
-* Security Groups and IAM roles for secure access
-* S3 bucket for storage / backend (optional)
-* CloudWatch for monitoring and alerts
+The main goal of this project is to show how infrastructure setup can be automated in a repeatable way instead of being created manually, while also adding basic observability for system health and operational awareness.
 
 ---
 
-## ⚙️ Tech Stack
+## Overview
 
-* **Cloud Provider:** AWS
-* **IaC Tool:** Terraform
-* **Monitoring:** AWS CloudWatch / Prometheus + Grafana
-* **OS:** Linux (Ubuntu/Amazon Linux)
-* **Optional Tools:** Ansible, Docker
+This project focuses on two core DevOps practices:
+
+* **Infrastructure as Code (IaC)** using Terraform
+* **Monitoring and alerting** for better infrastructure visibility
+
+By defining infrastructure through code, the environment can be created consistently across deployments. Monitoring adds visibility into resource health, usage, and potential issues, helping improve reliability and operational awareness.
 
 ---
 
-## 📁 Project Structure
+## My Contribution
 
-```
+The primary work completed in this project includes:
+
+* Writing **Terraform configuration and reusable modules** to provision AWS infrastructure
+* Automating infrastructure setup to reduce manual provisioning effort
+* Configuring **monitoring dashboards and alerting mechanisms**
+* Organizing the project to reflect a practical DevOps workflow with version-controlled infrastructure
+
+---
+
+## Key Objectives
+
+* Automate AWS resource provisioning using Terraform
+* Reduce manual setup effort and improve repeatability
+* Improve observability through dashboards and alerts
+* Demonstrate a practical DevOps workflow using Infrastructure as Code
+
+---
+
+## Tech Stack
+
+**Cloud:** AWS
+**Infrastructure as Code:** Terraform
+**Monitoring:** CloudWatch / Grafana / Prometheus *(use whichever applies to your actual repo)*
+**Other Tools:** Git, Linux
+
+---
+
+## Project Structure
+
+```text
 .
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── provider.tf
-├── terraform.tfvars
-├── modules/
-│   ├── vpc/
-│   ├── ec2/
-│   └── security/
-├── scripts/
-│   └── install_dependencies.sh
-└── assets/
-    └── architecture.png
+├── modules/               # Reusable Terraform modules
+├── environments/          # Environment-specific Terraform configuration
+├── monitoring/            # Monitoring or dashboard-related configuration
+├── main.tf                # Main infrastructure definition
+├── variables.tf           # Input variables
+├── outputs.tf             # Output values
+├── provider.tf            # Provider configuration
+└── README.md              # Project documentation
 ```
 
----
-
-## 🚀 Getting Started
-
-### 1️⃣ Prerequisites
-
-* AWS Account
-* Terraform installed (`>= 1.x`)
-* AWS CLI configured (`aws configure`)
-* SSH key pair
+> Update the structure above if your actual repository folders are different.
 
 ---
 
-### 2️⃣ Clone the Repository
+## What This Project Provisions
 
-```bash
-git clone https://github.com/your-username/terraform-aws-iac.git
-cd terraform-aws-iac
-```
+This project is designed to provision AWS infrastructure in an automated and repeatable way.
+
+Depending on your current implementation, it may include resources such as:
+
+* Virtual network components
+* Compute resources
+* Security groups
+* Storage or supporting services
+* Monitoring and alerting configuration
+
+You should edit this section to match your exact AWS resources.
+
+Example:
+
+* VPC
+* Subnets
+* EC2 instances
+* Security Groups
+* CloudWatch alarms
+* Dashboard configuration
 
 ---
 
-### 3️⃣ Initialize Terraform
+## Terraform Workflow
+
+### Initialize Terraform
 
 ```bash
 terraform init
 ```
 
----
+### Validate configuration
 
-### 4️⃣ Preview Changes
+```bash
+terraform validate
+```
+
+### Review execution plan
 
 ```bash
 terraform plan
 ```
 
----
-
-### 5️⃣ Apply Configuration
+### Apply infrastructure
 
 ```bash
 terraform apply
 ```
 
----
-
-### 6️⃣ Destroy Resources (Cleanup)
+### Destroy infrastructure
 
 ```bash
 terraform destroy
@@ -105,80 +125,79 @@ terraform destroy
 
 ---
 
-## 🔐 Security Best Practices
+## Monitoring Setup
 
-* Used **IAM roles** instead of hardcoded credentials
-* Applied **least privilege principle**
-* Restricted access via **Security Groups**
-* Sensitive variables stored securely (not committed to Git)
+Monitoring is included to improve infrastructure visibility and help identify system issues early.
 
----
+This project can include:
 
-## 📊 Monitoring & Alerts
+* Resource-level monitoring dashboards
+* Health and usage metrics
+* Alerting for threshold-based events
+* Basic observability for operational awareness
 
-* Configured **CloudWatch metrics and alarms** for:
+Example monitoring use cases:
 
-  * CPU utilization
-  * Network traffic
-  * Instance health
-* Optional integration with **Grafana dashboards**
-* Alerts can be sent via **SNS (email notifications)**
-
----
-
-## 🌍 Features
-
-* Infrastructure provisioning using reusable Terraform modules
-* Environment consistency and reproducibility
-* Scalable cloud architecture
-* Monitoring and alerting for observability
+* CPU utilization alerts
+* Memory or storage monitoring
+* Instance health checks
+* Dashboard-based visibility into infrastructure performance
 
 ---
 
-## 🔄 Future Improvements
+## Benefits of This Approach
 
-* Add **remote backend (S3 + DynamoDB)**
-* Implement **Auto Scaling Groups**
-* Add **multi-environment support (dev/staging/prod)**
-* Integrate **CI/CD pipeline for Terraform deployments**
-* Add **logging with ELK stack or CloudWatch Logs**
-
----
-
-## 📸 Screenshots
-
-| Terraform Apply                   | CloudWatch Dashboard                   |
-| --------------------------------- | -------------------------------------- |
-| ![](./assets/terraform-apply.png) | ![](./assets/cloudwatch-dashboard.png) |
+* **Repeatable deployments** using version-controlled infrastructure
+* **Reduced manual setup effort** compared to traditional provisioning
+* **Improved visibility** through dashboards and alerts
+* **Better operational consistency** across environments
 
 ---
 
-## 🧠 Key Learnings
+## Use Case
 
-* Hands-on experience with Infrastructure as Code
-* Deep understanding of AWS networking (VPC, subnets, routing)
-* Implementing monitoring and alerting systems
-* Writing modular and reusable Terraform code
+This project is useful for demonstrating how DevOps teams can:
 
----
+* provision cloud resources faster
+* reduce configuration drift
+* standardize infrastructure setup
+* improve infrastructure monitoring and reliability
 
-## 🤝 Contributing
-
-Feel free to fork this repo and submit pull requests.
+It is designed as a practical learning project to strengthen skills in Terraform, AWS, monitoring, and infrastructure automation.
 
 ---
 
-## 📜 License
+## Important Notes
 
-This project is licensed under the MIT License.
+* This project is intended to demonstrate **Infrastructure as Code and monitoring concepts**
+* Resource definitions and monitoring configuration should be reviewed before deployment in a real environment
+* Costs may apply when provisioning AWS resources
+* Monitoring tools and dashboards should be customized based on the infrastructure being deployed
+
+---
+
+## Resume-Friendly Project Summary
+
+This project can be described as:
+
+* Developed reusable **Terraform modules** to provision AWS infrastructure in a repeatable and automated manner
+* Reduced manual setup effort by automating infrastructure provisioning workflows
+* Configured **monitoring dashboards and alerting mechanisms** to improve infrastructure visibility and operational awareness
 
 ---
 
-## 👤 Author
+## Future Improvements
 
-**Parthasarathy-G**
+Possible next steps for this project:
 
-* GitHub: https://github.com/Parthasarathy-G
-* LinkedIn: https://linkedin.com/in/parthasarathyg28
+* Add support for multiple environments such as dev, test, and prod
+* Integrate the Terraform workflow into a CI/CD pipeline
+* Add remote Terraform state management
+* Expand monitoring coverage with more detailed dashboards and alerts
+* Add validation, formatting, and security checks for Terraform code
 
 ---
+
+## License
+
+This project is intended for learning and portfolio demonstration purposes.
